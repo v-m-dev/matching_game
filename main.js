@@ -1,0 +1,8 @@
+const cards = document.querySelectorAll(".card");
+
+cards.forEach((card) => {
+  card.addEventListener("click", () => {
+    card.classList.toggle("flipped");
+    console.log("clicked");
+  });
+});
