@@ -1,0 +1,56 @@
+:root {
+  --clr-red: #e63946;
+  --clr-white: #f1faee;
+  --clr-light-blue: #a8dadc;
+  --clr-blue: #457a9c;
+  --clr-dark-blue: #1d3557;
+}
+
+body {
+  background-color: var(--clr-white);
+  height: 100vh;
+}
+body,
+main,
+.game-container {
+  display: grid;
+  place-items: center;
+}
+
+.game-container {
+  gap: 2.5rem;
+}
+
+.cards-container {
+  display: grid;
+  gap: 1rem;
+  width: 25rem;
+  height: 25rem;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 equal-width columns */
+  grid-template-rows: repeat(3, 1fr); /* Creates 3 equal-height rows */
+}
+
+.card {
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  background-color: var(--clr-light-blue);
+  transition: all 0.3s ease-out;
+}
+
+.new-game-btn {
+  padding-block: 1rem;
+  padding-inline: 2rem;
+  background-color: #e63946;
+  font-size: 2rem;
+  color: var(--clr-white);
+  border-width: 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: all 0.3s ease-out;
+}
+
+.card:hover,
+.new-game-btn:hover {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+}
