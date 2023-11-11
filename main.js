@@ -78,18 +78,20 @@ function showFront() {
 function restartGame() {
 addRandomImagesToCards(guessImgElems)
   showFront()
-
-  setTimeout(() => {
-    showBack()
+newGameBtn.disabled = true;
+newGameBtn.classList.add("disabled-btn");
+setTimeout(() => {
+  showBack()
+  newGameBtn.disabled = false;
+  newGameBtn.classList.remove("disabled-btn");
   }, 2000);
 
 }
 
 
 
-newGameBtn.addEventListener("click", () => {
-  
- restartGame()
+newGameBtn.addEventListener("click", (e) => {
+  restartGame()
 }
 )
 

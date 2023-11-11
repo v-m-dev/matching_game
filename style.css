@@ -71,7 +71,7 @@ main,
 .new-game-btn {
   padding-block: 1rem;
   padding-inline: 2rem;
-  background-color: #e63946;
+  background-color: var(--clr-red);
   font-size: 2rem;
   color: var(--clr-white);
   border-width: 0;
@@ -80,8 +80,14 @@ main,
   transition: all 0.3s ease-out;
 }
 
+
 .card:hover,
 .new-game-btn:hover {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   cursor: pointer;
+}
+
+.disabled-btn, .disabled-btn:hover {
+  background-color: #e63947c4;
+  cursor: default;
 }
