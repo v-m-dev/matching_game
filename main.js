@@ -1,6 +1,7 @@
 const cardElems = document.querySelectorAll(".card");
 const guessImgElems = document.querySelectorAll(".back-img");
 const newGameBtn = document.querySelector(".new-game-btn");
+const cardsContainer = document.querySelector(".cards-container");
 
 const images = [
 "airplane-svgrepo-com.svg",
@@ -27,6 +28,8 @@ const images = [
 "scooter-scooter-svgrepo-com.svg",
 "scraper-svgrepo-com.svg"
 ]
+
+cardsContainer.classList.add("disabled-cards");
 
 // add flip logic to all cards
 cardElems.forEach((card) => {
@@ -80,17 +83,23 @@ addRandomImagesToCards(guessImgElems)
   showFront()
 newGameBtn.disabled = true;
 newGameBtn.classList.add("disabled-btn");
+if(!cardsContainer.classList.contains("disabled-cards")) {
+  cardsContainer.classList.add("disabled-cards");
+}
 setTimeout(() => {
   showBack()
   newGameBtn.disabled = false;
+  if(cardsContainer.classList.contains("disabled-cards")) {
+    cardsContainer.classList.remove("disabled-cards");
+  }
   newGameBtn.classList.remove("disabled-btn");
-  }, 2000);
 
+  }, 2000);
 }
 
 
 
-newGameBtn.addEventListener("click", (e) => {
+newGameBtn.addEventListener("click", () => {
   restartGame()
 }
 )
