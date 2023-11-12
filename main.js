@@ -93,6 +93,10 @@ setTimeout(() => {
     cardsContainer.classList.remove("disabled-cards");
   }
   newGameBtn.classList.remove("disabled-btn");
+  newGameBtn.classList.add("cursor-pointer");
+  cardElems.forEach((card) => {
+    card.classList.add("cursor-pointer");
+  });
 
   }, 2000);
 }

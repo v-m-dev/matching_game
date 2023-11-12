@@ -90,9 +90,15 @@ main,
 
 .disabled-btn, .disabled-btn:hover {
   background-color: #e63947c4;
+  cursor: default;
 }
 
 /* makes game non interactive until it completely starts */
 .disabled-cards, .disabled-btn {
-  pointer-events: none
+  pointer-events: none;
+  cursor: default;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
