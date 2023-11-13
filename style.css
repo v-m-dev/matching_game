@@ -12,7 +12,9 @@ body {
 }
 body,
 main,
-.game-container, .front, .back {
+.game-container,
+.front,
+.back {
   display: grid;
   place-items: center;
 }
@@ -24,9 +26,9 @@ main,
 .cards-container {
   display: grid;
   gap: 1rem;
-  width: 25rem;
+  width: 35rem;
   height: 25rem;
-  grid-template-columns: repeat(3, 1fr); /* Creates 3 equal-width columns */
+  grid-template-columns: repeat(4, 1fr); /* Creates 3 equal-width columns */
   grid-template-rows: repeat(3, 1fr); /* Creates 3 equal-height rows */
 }
 
@@ -46,10 +48,10 @@ main,
 
 .front {
   background-color: var(--clr-light-blue);
-
 }
 
-.question-mark-icon, .back-img {
+.question-mark-icon,
+.back-img {
   width: 80%;
   height: 80%;
 }
@@ -81,20 +83,21 @@ main,
   transition: all 0.3s ease-out;
 }
 
-
 .card:hover,
 .new-game-btn:hover {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   cursor: pointer;
 }
 
-.disabled-btn, .disabled-btn:hover {
+.disabled-btn,
+.disabled-btn:hover {
   background-color: #e63947c4;
   cursor: default;
 }
 
 /* makes game non interactive until it completely starts */
-.disabled-cards, .disabled-btn {
+.disabled-cards,
+.disabled-btn {
   pointer-events: none;
   cursor: default;
 }
