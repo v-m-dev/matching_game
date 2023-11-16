@@ -96,8 +96,7 @@ main,
 }
 
 /* makes game non interactive until it completely starts */
-.disabled-cards,
-.disabled-btn {
+.disabled {
   pointer-events: none;
   cursor: default;
 }

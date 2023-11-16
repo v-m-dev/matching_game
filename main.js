@@ -29,12 +29,42 @@ const images = [
   "scraper-svgrepo-com.svg",
 ];
 
-cardsContainer.classList.add("disabled-cards");
+const matchedCards = [];
+
+cardsContainer.classList.add("disabled");
 
 // add flip logic to all cards
 cardElems.forEach((card) => {
   card.addEventListener("click", () => {
     card.classList.toggle("flipped");
+    if (matchedCards.length === 0 && card.classList.contains("flipped")) {
+      matchedCards.push(card);
+    } else if (matchedCards.length === 1) {
+      if (matchedCards[0] !== card && card.classList.contains("flipped")) {
+        matchedCards.push(card);
+      } else {
+        matchedCards.pop();
+      }
+    }
+
+    console.log(matchedCards);
+
+    if (matchedCards.length === 2) {
+      if (
+        matchedCards[0].querySelector(".back-img").src ===
+          card.querySelector(".back-img").src &&
+        matchedCards[0] !== card
+      ) {
+        matchedCards[0].classList.add("disabled");
+        card.classList.add("disabled");
+        matchedCards.length = 0;
+      } else {
+        setTimeout(() => {
+          card.classList.toggle("flipped");
+        }, 500);
+        matchedCards.pop();
+      }
+    }
   });
 });
 
@@ -75,19 +105,28 @@ function showFront() {
   });
 }
 
+function removeDisabled() {
+  cardElems.forEach((card) => {
+    card.classList.remove("disabled");
+  });
+}
+
 function restartGame() {
+  matchedCards.length = 0;
+
+  removeDisabled();
   addRandomImagesToCards(guessImgElems);
   showFront();
   newGameBtn.disabled = true;
   newGameBtn.classList.add("disabled-btn");
-  if (!cardsContainer.classList.contains("disabled-cards")) {
-    cardsContainer.classList.add("disabled-cards");
+  if (!cardsContainer.classList.contains("disabled")) {
+    cardsContainer.classList.add("disabled");
   }
   setTimeout(() => {
     showBack();
     newGameBtn.disabled = false;
-    if (cardsContainer.classList.contains("disabled-cards")) {
-      cardsContainer.classList.remove("disabled-cards");
+    if (cardsContainer.classList.contains("disabled")) {
+      cardsContainer.classList.remove("disabled");
     }
     newGameBtn.classList.remove("disabled-btn");
     newGameBtn.classList.add("cursor-pointer");
