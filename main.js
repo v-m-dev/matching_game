@@ -2,6 +2,7 @@ const cardElems = document.querySelectorAll(".card");
 const guessImgElems = document.querySelectorAll(".back-img");
 const newGameBtn = document.querySelector(".new-game-btn");
 const cardsContainer = document.querySelector(".cards-container");
+const gameOverContainer = document.querySelector(".go-container");
 
 const images = [
   "airplane-svgrepo-com.svg",
@@ -32,6 +33,7 @@ const images = [
 const matchedCards = [];
 
 cardsContainer.classList.add("disabled");
+let flipped = 0;
 
 // add flip logic to all cards
 cardElems.forEach((card) => {
@@ -47,8 +49,6 @@ cardElems.forEach((card) => {
       }
     }
 
-    console.log(matchedCards);
-
     if (matchedCards.length === 2) {
       if (
         matchedCards[0].querySelector(".back-img").src ===
@@ -58,6 +58,12 @@ cardElems.forEach((card) => {
         matchedCards[0].classList.add("disabled");
         card.classList.add("disabled");
         matchedCards.length = 0;
+        flipped += 2;
+        if (flipped === cardElems.length) {
+          setTimeout(() => {
+            gameOverContainer.classList.remove("hidden");
+          }, 500);
+        }
       } else {
         setTimeout(() => {
           card.classList.toggle("flipped");
@@ -72,7 +78,6 @@ function getRandomImages() {
   const randomImages = [];
   while (randomImages.length < guessImgElems.length) {
     const randomImg = images[Math.floor(Math.random() * images.length)];
-    console.log(randomImg);
 
     if (!randomImages.includes(randomImg)) {
       randomImages.push(randomImg, randomImg);
@@ -90,7 +95,6 @@ function addRandomImagesToCards(imgElems) {
   const shuffledImages = shuffleRandomImages(getRandomImages());
   imgElems.forEach((imgElem, index) => {
     imgElem.src = `./images/images_to_guess/${shuffledImages[index]}`;
-    console.log(imgElem.src);
   });
 }
 
@@ -113,6 +117,8 @@ function removeDisabled() {
 
 function restartGame() {
   matchedCards.length = 0;
+  flipped = 0;
+  gameOverContainer.classList.add("hidden");
 
   removeDisabled();
   addRandomImagesToCards(guessImgElems);

@@ -9,6 +9,7 @@
 body {
   background-color: var(--clr-white);
   height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
 body,
 main,
@@ -103,4 +104,12 @@ main,
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.game-over {
+  color: var(--clr-dark-blue);
+}
+
+.hidden {
+  display: none;
 }
